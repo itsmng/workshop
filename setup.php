@@ -2,22 +2,22 @@
 
 global $CFG_GLPI;
 // Version of the plugin (major.minor.bugfix)
-define('SKELETON_VERSION', '1.0.0');
-
-define ('SKELETON_ITSMNG_MIN_VERSION', '2.0');
+define('WORKSHOP_VERSION', '1.0.0');
+define('WORKSHOP_ITSMNG_MIN_VERSION', '2.0');
+define('WORKSHOP_AUTHOR', 'ITSMNG Team');
 
 /**
  * Define the plugin's version and informations
  *
  * @return Array [name, version, author, homepage, license, minGlpiVersion]
  */
-function plugin_version_skeleton() {
+function plugin_version_workshop() {
    $requirements = [
-      'name'           => 'Skeleton Plugin',
-      'version'        => SKELETON_VERSION,
-      'author'         => 'ITSMNG Team',
-      'homepage'       => 'https://github.com/itsmng/plugin-skeleton',
-      'license'        => '<a href="../plugins/plugin-skeleton/LICENSE" target="_blank">GPLv3</a>',
+      'name'           => 'Workshop Plugin',
+      'version'        => WORKSHOP_VERSION,
+      'author'         => WORKSHOP_AUTHOR,
+      'homepage'       => 'https://github.com/itsmng/workshop',
+      'license'        => '<a href="../plugins/plugin-workshop/LICENSE" target="_blank">GPLv3</a>',
    ];
    return $requirements;
 }
@@ -25,19 +25,12 @@ function plugin_version_skeleton() {
 /**
  * Initialize all classes and generic variables of the plugin
  */
-function plugin_init_skeleton() {
-   global $PLUGIN_HOOKS, $CFG_GLPI;
+function plugin_init_workshop() {
+   global $PLUGIN_HOOKS;
 
    // Set the plugin CSRF compliance (required since GLPI 0.84)
-   $PLUGIN_HOOKS['csrf_compliant']['skeleton'] = true;
-
-   // Register profile rights
-   Plugin::registerClass(PluginSkeletonProfile::class, ['addtabon' => 'Profile']);
-   $PLUGIN_HOOKS['change_profile']['skeleton'] = [PluginSkeletonProfile::class, 'changeProfile'];
-
-   if (Session::haveRight('plugin_skeleton_config', UPDATE)) {
-       $PLUGIN_HOOKS['config_page']['skeleton'] = 'front/config.form.php';
-   }
+   $PLUGIN_HOOKS['csrf_compliant']['workshop'] = true;
+   $PLUGIN_HOOKS['menu_toadd']['workshop']     = ['helpdesk' => PluginWorkshopMember::class];
 }
 
 /**
@@ -45,11 +38,11 @@ function plugin_init_skeleton() {
  *
  * @return boolean
  */
-function skeleton_check_prerequisites() {
+function workshop_check_prerequisites() {
    $prerequisitesSuccess = true;
 
-   if (version_compare(ITSM_VERSION, SKELETON_ITSMNG_MIN_VERSION, 'lt')) {
-      echo "This plugin requires ITSM >= " . SKELETON_ITSMNG_MIN_VERSION . "<br>";
+   if (version_compare(ITSM_VERSION, WORKSHOP_ITSMNG_MIN_VERSION, 'lt')) {
+      echo "This plugin requires ITSM >= " . WORKSHOP_ITSMNG_MIN_VERSION . "<br>";
       $prerequisitesSuccess = false;
    }
 
@@ -62,7 +55,7 @@ function skeleton_check_prerequisites() {
  * @param string $verbose Set true to show all messages (false by default)
  * @return boolean
  */
-function skeleton_check_config($verbose = false) {
+function workshop_check_config($verbose = false) {
    if ($verbose) {
       echo "Checking plugin configuration<br>";
    }
