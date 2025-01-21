@@ -37,9 +37,9 @@ class PluginWorkshopMember extends CommonDBTM
         'alemarchand',
     ];
 
-    public static function install()
-    {
-        global $DB;
+    public static function install() {
+        global
+            $DB;
 
         $query = <<<SQL
         CREATE TABLE IF NOT EXISTS `glpi_plugin_workshop_members` (
