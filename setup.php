@@ -4,7 +4,7 @@ global $CFG_GLPI;
 // Version of the plugin (major.minor.bugfix)
 define('WORKSHOP_VERSION', '1.0.0');
 define('WORKSHOP_ITSMNG_MIN_VERSION', '2.0');
-define('WORKSHOP_AUTHOR', 'ITSMNG Team');
+define('WORKSHOP_AUTHOR', 'ITSMNG Team, Antoine Lemarchand');
 
 /**
  * Define the plugin's version and informations
