@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ---------------------------------------------------------------------
  * ITSM-NG
@@ -34,7 +35,7 @@ include("../../../inc/includes.php");
 $plugin = new Plugin();
 
 
-if($plugin->isActivated("workshop")) {
+if ($plugin->isActivated("workshop")) {
     Html::header(__('Workshop', 'workshop'), '', "config", "plugins");
     Search::show("PluginWorkshopMember");
 } else {

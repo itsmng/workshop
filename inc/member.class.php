@@ -33,12 +33,11 @@
 
 class PluginWorkshopMember extends CommonDBTM
 {
-
-    static private $nameList = [
+    private static $nameList = [
         'alemarchand',
     ];
 
-    static function install()
+    public static function install()
     {
         global $DB;
 
@@ -65,7 +64,7 @@ class PluginWorkshopMember extends CommonDBTM
         return true;
     }
 
-    static function uninstall()
+    public static function uninstall()
     {
         global $DB;
 
@@ -78,7 +77,7 @@ class PluginWorkshopMember extends CommonDBTM
         return true;
     }
 
-    static function getMenuContent(): array
+    public static function getMenuContent(): array
     {
         $menu = [
             'title' => 'Members',
@@ -89,12 +88,12 @@ class PluginWorkshopMember extends CommonDBTM
         return $menu;
     }
 
-    function showForm()
+    public function showForm()
     {
         echo $this->fields['name'];
     }
 
-    function rawSearchOptions()
+    public function rawSearchOptions()
     {
         $tab = [
             [
