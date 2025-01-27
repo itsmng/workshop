@@ -40,12 +40,11 @@ function plugin_init_workshop()
  *
  * @return boolean
  */
-function workshop_check_prerequisites()
+function plugin_workshop_check_prerequisites()
 {
     $prerequisitesSuccess = true;
 
-    // If version of ITSM is less than (lt) 2.0, then we can't install this plugin
-    if (version_compare(ITSM_VERSION, WORKSHOP_ITSMNG_MIN_VERSION, 'gt')) {
+    if (version_compare(ITSM_VERSION, WORKSHOP_ITSMNG_MIN_VERSION, '>=')) {
         echo "This plugin requires ITSM >= " . WORKSHOP_ITSMNG_MIN_VERSION . "<br>";
         $prerequisitesSuccess = false;
     }
@@ -59,7 +58,7 @@ function workshop_check_prerequisites()
  * @param string $verbose Set true to show all messages (false by default)
  * @return boolean
  */
-function workshop_check_config($verbose = false)
+function plugin_workshop_check_config($verbose = false)
 {
     if ($verbose) {
         echo "Checking plugin configuration<br>";
