@@ -1,0 +1,14 @@
+{
+  "name": "workshop",
+  "version": "1.0.0",
+  "description": "A plugin created for git and github workshops.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.16.4"
+  }
+}
