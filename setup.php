@@ -3,7 +3,7 @@
 global $CFG_GLPI;
 // Version of the plugin (major.minor.bugfix)
 define('WORKSHOP_VERSION', '1.0.0');
-define('WORKSHOP_ITSMNG_MIN_VERSION', '2.0');
+define('WORKSHOP_ITSMNG_MIN_VERSION', '2.0.4');
 define('WORKSHOP_AUTHOR', 'ITSMNG Team' , 'Bacha Amine');
 
 /**
@@ -44,7 +44,7 @@ function plugin_workshop_check_prerequisites()
 {
     $prerequisitesSuccess = true;
 
-    if (version_compare(ITSM_VERSION, WORKSHOP_ITSMNG_MIN_VERSION, '>=')) {
+    if (version_compare(ITSM_VERSION, WORKSHOP_ITSMNG_MIN_VERSION, '<')) {
         echo "This plugin requires ITSM >= " . WORKSHOP_ITSMNG_MIN_VERSION . "<br>";
         $prerequisitesSuccess = false;
     }
