@@ -1,4 +1,3 @@
-
 <?php
 /**
  * ---------------------------------------------------------------------
@@ -31,15 +30,22 @@
  * ---------------------------------------------------------------------
  */
 
+declare(strict_types=1);
+
 class PluginWorkshopMember extends CommonDBTM
 {
-    private static $nameList = [
+    private static array $nameList = [
         'alemarchand',
     ];
 
-    public static function install() {
-        global
-            $DB;
+    /**
+     * Install the plugin table in database
+     *
+     * @return bool
+     */
+    public static function install(): bool
+    {
+        global $DB;
 
         $query = <<<SQL
         CREATE TABLE IF NOT EXISTS `glpi_plugin_workshop_members` (
@@ -64,7 +70,12 @@ class PluginWorkshopMember extends CommonDBTM
         return true;
     }
 
-    public static function uninstall()
+    /**
+     * Uninstall the plugin table from database
+     *
+     * @return bool
+     */
+    public static function uninstall(): bool
     {
         global $DB;
 
@@ -77,6 +88,11 @@ class PluginWorkshopMember extends CommonDBTM
         return true;
     }
 
+    /**
+     * Get menu content for the plugin
+     *
+     * @return array
+     */
     public static function getMenuContent(): array
     {
         $menu = [
@@ -88,12 +104,22 @@ class PluginWorkshopMember extends CommonDBTM
         return $menu;
     }
 
-    public function showForm()
+    /**
+     * Show form for the member
+     *
+     * @return void
+     */
+    public function showForm(): void
     {
         echo $this->fields['name'];
     }
 
-    public function rawSearchOptions()
+    /**
+     * Get search options for the member
+     *
+     * @return array
+     */
+    public function rawSearchOptions(): array
     {
         $tab = [
             [

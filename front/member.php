@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * ---------------------------------------------------------------------
  * ITSM-NG
@@ -34,13 +36,12 @@ include("../../../inc/includes.php");
 
 $plugin = new Plugin();
 
-
 if ($plugin->isActivated("workshop")) {
-    Html::header(__('Workshop','workshop'),'',"config","plugins");
-    Search::show( "PluginWorkshopMember" );
+    Html::header(__('Workshop', 'workshop'), '', "config", "plugins");
+    Search::show("PluginWorkshopMember");
 } else {
     Html::header("settings", '', "config", "plugins");
-    echo "<div class='center'><br><br><img src=\"".$CFG_GLPI["root_doc"]."/pics/warning.png\" alt='warning'><br><br>";
+    echo "<div class='center'><br><br><img src=\"" . $CFG_GLPI["root_doc"] . "/pics/warning.png\" alt='warning'><br><br>";
     echo "<b>Please enable the plugin before configuring it</b></div>";
     Html::footer();
 }
