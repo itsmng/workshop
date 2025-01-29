@@ -44,7 +44,7 @@ function plugin_workshop_check_prerequisites()
 {
     $prerequisitesSuccess = true;
 
-    if (version_compare(ITSM_VERSION, WORKSHOP_ITSMNG_MIN_VERSION, '>=')) {
+    if (version_compare(ITSM_VERSION, WORKSHOP_ITSMNG_MIN_VERSION, '<')) {
         echo "This plugin requires ITSM >= " . WORKSHOP_ITSMNG_MIN_VERSION . "<br>";
         $prerequisitesSuccess = false;
     }
